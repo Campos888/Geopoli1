@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>Home Page</h1>
+
+  <ul>
+    <li><a href="/continents">Continents</a></li>
+  </ul>
+
+  
+  <!-- logut solo se sei loggato -->
+   <div sec:authorize="isAuthenticated()">
+     <form action="/logout" method="post">
+       <button type="submit">Logout</button>
+     </form>
+   </div>
+   
+
+   <!-- login solo se non sei loggato puoi loggarti-->
+    <div sec:authorize="!isAuthenticated()">
+      <a href="/login">Login</a>
+    </div>
+ 
+	<!-- login solo se non sei loggato puoi registrarti-->
+	 <div sec:authorize="!isAuthenticated()">
+	   	<a href="/register">Register</a>
+	 </div>
+	
+	
+	
+</body>
+</html>

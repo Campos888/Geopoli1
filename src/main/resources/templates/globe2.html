@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Globe with Clickable Countries</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; }
+    #globeViz { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+<div id="globeViz"></div>
+
+<script src="https://unpkg.com/three"></script>
+<script src="https://unpkg.com/globe.gl"></script>
+<script>
+  const Globe = window.Globe;
+
+  const myGlobe = Globe()
+    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+    .polygonCapColor(() => 'rgba(200, 0, 0, 0.8)')
+    .polygonSideColor(() => 'rgba(0, 100, 0, 0.6)')
+    .polygonStrokeColor(() => '#111')
+    .onPolygonClick(polygon => {
+      console.log('Clicked polygon:', polygon);
+      if (polygon && polygon.properties && polygon.properties.ADMIN) {
+        alert(`You clicked: ${polygon.properties.ADMIN}`);
+      } else {
+        alert('Clicked polygon with no name');
+      }
+    });
+
+  myGlobe(document.getElementById('globeViz'));
+
+  fetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson')
+    .then(res => res.json())
+    .then(countries => {
+      console.log('GeoJSON loaded:', countries);
+      myGlobe.polygonsData(countries.features);
+    })
+    .catch(err => console.error('Error loading geojson:', err));
+</script>
+</body>
+</html>

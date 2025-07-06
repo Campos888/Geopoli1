@@ -1,0 +1,100 @@
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Countries</title>
+    <link rel="stylesheet" href="/stile.css?version=2" />
+  </head>
+
+  <body>
+	
+	
+    <h1>Countries</h1>
+    <ul>
+      <li th:each="country : ${continentCountries}">
+        <a th:href="@{'/country' + '/' + ${country.id}}"
+           th:text="${country.name}">countryName</a>
+      </li>
+    </ul>
+  </body>
+
+</html>
+-->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Countries</title>
+    <link rel="stylesheet" href="/css/countries.css" />
+  </head>
+
+
+
+  <body th:class="${continent.name}"> <!-- class="europe", "asia", etc. -->
+
+    <div class="container">
+      <div class="header">
+        <a href="/continents" class="back-button">Back to Continents</a>
+        <h1 class="continent-title"
+            th:text="${continent.icon + ' ' + #strings.capitalize(continent.name)}">
+          🏰 Europe
+        </h1>
+        <p class="continent-subtitle">Select a country to explore its features</p>
+      </div>
+	
+	  
+	  
+	  
+	  
+	
+    <div class="search-container">
+      <input type="text" class="search-box" placeholder="Search countries..." id="searchBox" />
+    </div>
+
+	
+	
+	
+	
+	
+	
+	
+	
+    <div class="countries-grid" id="countriesGrid">
+      <!-- Dynamically rendered country cards -->
+      <a th:each="country : ${continentCountries}"
+         th:href="@{'/country/' + ${country.id}}"
+         class="country-card">
+         
+      <!--  <div class="country-flag" th:text="${country.flagEmoji}">🏳️</div>  
+		-->
+		<div class="country-flag">
+		  <img th:src="'https://flagcdn.com/48x36/' + ${country.code} + '.png'"
+		       th:alt="${country.name} + ' flag'"
+		       width="48" height="36"
+		       style="border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.2);" />
+		</div>
+
+        <h3 class="country-name" th:text="${country.name}">Country Name</h3> 
+       <!-- <p class="country-info">
+          <span th:text="'Capital: ' + ${country.capital}">Capital</span><br />
+          <span th:text="'Population: ' + ${#numbers.formatInteger(country.population, 0)} + ' million'">Population</span>
+        </p>
+		-->
+      </a>
+    </div>
+  </div>
+
+  <!-- Your existing CSS and JS files can stay linked externally -->
+</body>
+</html>
+
+
+
+
+
+

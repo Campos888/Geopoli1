@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Country Image</title>
+</head>
+<body>
+    <h1>Update Image for [[${country.name}]]</h1>
+    <form th:action="@{/admin/updateCountryImage}" method="post">
+        <input type="hidden" name="id" th:value="${country.id}" />
+        <label for="urlImage">Image URL:</label>
+        <input type="text" id="urlImage" name="urlImage" th:value="${country.urlImage}" required />
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

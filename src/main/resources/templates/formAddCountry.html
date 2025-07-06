@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Country</title>
+</head>
+<body>
+    <h1>Add a Country</h1>
+
+    <form th:action="@{/admin/addCountry}" method="post" th:object="${country}">
+        <div>
+            <label for="name">Country Name:</label>
+            <input type="text" th:field="*{name}" id="name" required />
+        </div>
+
+        <div>
+            <label for="urlImage">Image URL:</label>
+            <input type="text" th:field="*{urlImage}" id="urlImage" />
+        </div>
+
+        <div>
+            <label for="continent">Continent:</label>
+            <select name="continentId" id="continent" required>
+                <option value="">-- Select Continent --</option>
+                <th:block th:each="continent : ${continents}">
+                    <option th:value="${continent.id}" th:text="${continent.name}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Add Country</button>
+        </div>
+    </form>
+</body>
+</html>

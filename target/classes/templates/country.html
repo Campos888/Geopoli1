@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Country</title>
+    <link rel="stylesheet" href="/css/stile.css?version=2" />
+  </head>
+
+  <body>
+
+    <div th:if="${country}">
+      <h1 th:text="${country.name}">countryName</h1>
+
+      <div>
+        <img th:src="${country.urlImage}" alt="flag image" width="300" />
+        <div>
+          <a th:href="@{'/admin/formUpdateCountryImage/' + ${country.id}}">Update Image</a>
+        </div>
+		<div>
+		  <a th:href="@{'/admin/deleteCountry/' + ${country.id}}">Delete</a>
+		</div>
+      </div>
+
+	  
+	  <p>Danger level: 
+	    <span th:switch="${country.dangerLevel.name()}">
+	      <span th:case="'LOW'">LOW</span>
+	      <span th:case="'MEDIUM'">MEDIUM</span>
+	      <span th:case="'HIGH'">HIGH</span>
+	      <span th:case="*">UNKNOWN</span>
+	    </span>
+	  </p>
+
+
+	  
+	  
+	  <div class="danger-animation">
+	    <img src="/images/stickman_machinegun1.jpg" alt="Stickman 1" />
+	    <img src="/images/stickman_machinegun2.png" alt="Stickman 2" />
+	  </div>
+	  
+	  
+	  
+	  
+      <!-- ✅ COMMENTS SECTION -->
+      <hr/>
+      <h2>Comments</h2>
+
+      <div th:if="${country.comments != null and !country.comments.isEmpty()}">
+        <ul>
+          <li th:each="comment : ${country.comments}">
+            <strong th:text="${comment.user.credentials.username}">Username</strong>:
+            <span th:text="${comment.text}">Comment text</span>
+            <small th:text="${#temporals.format(comment.createdAt, 'dd/MM/yyyy HH:mm')}"></small>
+          </li>
+        </ul>
+      </div>
+
+      <div th:unless="${country.comments != null and !country.comments.isEmpty()}">
+        <p>No comments yet. Be the first to comment!</p>
+      </div>
+	  
+	  
+	  
+	  
+	 
+
+	  
+      <!-- ✅ COMMENT FORM -->
+      <hr/>
+      <h3>Add a Comment</h3>
+      <form action="/addComment" method="post">
+        <input type="hidden" name="countryId" th:value="${country.id}" />
+        <textarea name="text" rows="4" cols="50" placeholder="Write your comment..." required></textarea><br/>
+        <button type="submit">Post</button>
+      </form>
+    </div>
+	
+	
+	
+	
+	
+	
+	
+    <div th:unless="${country}">
+      <p>Non esiste</p>
+    </div>
+  </body>
+</html>

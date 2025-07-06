@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries Explorer - Select Continent</title>
+	<link rel="stylesheet" href="/css/continents.css" />
+</head>
+<body>
+    <div class="page-transition" id="pageTransition">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>🌍 Countries Explorer</h1>
+            <p>Choose a continent to explore its countries</p>
+        </header>
+
+        <div class="continent-grid">
+            <a href="/countries?continent=africa" class="continent-card" data-continent="africa">
+                <span class="continent-count">54 countries</span>
+                <span class="continent-icon">🌍</span>
+                <h2 class="continent-name">Africa</h2>
+                <p class="continent-description">Discover the diverse cultures and landscapes of the African continent</p>
+            </a>
+
+            <a href="/countries?continent=asia" class="continent-card" data-continent="asia">
+                <span class="continent-count">48 countries</span>
+                <span class="continent-icon">🏯</span>
+                <h2 class="continent-name">Asia</h2>
+                <p class="continent-description">Explore the world's largest continent with ancient civilizations</p>
+            </a>
+
+            <a href="/countries?continent=europe" class="continent-card" data-continent="europe">
+                <span class="continent-count">44 countries</span>
+                <span class="continent-icon">🏰</span>
+                <h2 class="continent-name">Europe</h2>
+                <p class="continent-description">Journey through historic cities and diverse cultures</p>
+            </a>
+
+            <a href="/countries?continent=northamerica" class="continent-card" data-continent="northamerica">
+                <span class="continent-count">23 countries</span>
+                <span class="continent-icon">🗽</span>
+                <h2 class="continent-name">North America</h2>
+                <p class="continent-description">From Arctic tundra to tropical beaches</p>
+            </a>
+
+            <a href="/countries?continent=southamerica" class="continent-card" data-continent="southamerica">
+                <span class="continent-count">12 countries</span>
+                <span class="continent-icon">🌴</span>
+                <h2 class="continent-name">South America</h2>
+                <p class="continent-description">Experience the Amazon rainforest and Andes mountains</p>
+            </a>
+
+            <a href="/countries?continent=oceania" class="continent-card" data-continent="oceania">
+                <span class="continent-count">14 countries</span>
+                <span class="continent-icon">🏝️</span>
+                <h2 class="continent-name">Oceania</h2>
+                <p class="continent-description">Island nations and unique wildlife of the Pacific</p>
+            </a>
+        </div>
+    </div>
+
+	
+	
+	
+	
+	
+    <script>
+        // Add smooth page transition effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const continentCards = document.querySelectorAll('.continent-card');
+            const pageTransition = document.getElementById('pageTransition');
+
+            continentCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Show loading animation
+                    pageTransition.classList.add('active');
+                    
+                    // Simulate navigation delay
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 500);
+                });
+            });
+        });
+
+        // Add entrance animation
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.continent-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
