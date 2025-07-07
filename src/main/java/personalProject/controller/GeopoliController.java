@@ -95,11 +95,17 @@ public class GeopoliController {
 
 	
 	
+	
+	
 	@GetMapping("/admin/formUpdateCountryImage/{countryId}")
     public String formUpdateCountryImage(@PathVariable("countryId") Long countryId, Model model) {
 		model.addAttribute("country", this.countryService.getCountryById(countryId));
 		return "formUpdateCountryImage.html";
     }
+	
+	
+	
+	
 	
 	
 	@PostMapping("/admin/updateCountryImage")
@@ -115,6 +121,75 @@ public class GeopoliController {
 	    // Redirect to the updated country's detail page
 	    return "redirect:/country/" + id;
 	}
+	
+	//---------------
+	
+	
+	@GetMapping("/admin/formUpdateCountry/{countryId}")
+	public String formUpdateCountry(@PathVariable("countryId") Long countryId, Model model) {
+		model.addAttribute("country", this.countryService.getCountryById(countryId));
+		return "formUpdateCountry.html";
+	}
+	
+	
+	
+	@PostMapping("/admin/updateCountry")
+	public String updateCountry(@RequestParam("id") Long id,
+	                          @RequestParam("name") String name,
+	                          @RequestParam("code") String code,
+	                          @RequestParam(value = "urlImage", required = false) String urlImage,
+	                          // Key features
+	                          @RequestParam(value = "population", required = false) Integer population,
+	                          @RequestParam(value = "capital", required = false) String capital,
+	                          @RequestParam(value = "area", required = false) Integer area,
+	                          @RequestParam(value = "currency", required = false) String currency,
+	                          @RequestParam(value = "government", required = false) String government,
+	                          @RequestParam(value = "current_temperautre", required = false) Integer current_temperautre,
+	                          @RequestParam(value = "conflict_status", required = false) String conflict_status,
+	                          // Metrics (0-100)
+	                          @RequestParam(value = "political_stability", required = false) Integer political_stability,
+	                          @RequestParam(value = "healthcare", required = false) Integer healthcare,
+	                          @RequestParam(value = "education", required = false) Integer education,
+	                          @RequestParam(value = "envaironment", required = false) Integer envaironment,
+	                          @RequestParam(value = "military_strength", required = false) Integer military_strength,
+	                          @RequestParam(value = "wealth", required = false) Integer wealth,
+	                          @RequestParam(value = "travel_safty", required = false) Integer travel_safty,
+	                          Model model) {
+	    
+	    // Get the existing country
+	    Country country = countryService.getCountryById(id);
+	    
+	    // Update basic information
+	    country.setName(name);
+	    country.setCode(code);
+	    country.setUrlImage(urlImage);
+	    
+	    // Update key features
+	    country.setPopulation(population);
+	    country.setCapital(capital);
+	    country.setArea(area);
+	    country.setCurrency(currency);
+	    country.setGovernment(government);
+	    country.setCurrent_temperautre(current_temperautre);
+	    country.setConflict_status(conflict_status);
+	    
+	    // Update metrics
+	    country.setPolitical_stability(political_stability);
+	    country.setHealthcare(healthcare);
+	    country.setEducation(education);
+	    country.setEnvaironment(envaironment);
+	    country.setMilitary_strength(military_strength);
+	    country.setWealth(wealth);
+	    country.setTravel_safty(travel_safty);
+	    
+	    // Save the updated country
+	    countryService.save(country);
+	    
+	    // Redirect to the updated country's detail page
+	    return "redirect:/country/" + id;
+	}
+	
+	//------------------
 	
 	@GetMapping("/admin/formAddCountry")
 	public String formAddCountry(Model model) {
