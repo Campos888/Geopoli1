@@ -190,7 +190,7 @@ INSERT INTO country (id, name, url_image, continent_id) VALUES (155, 'Costa Rica
 INSERT INTO country (id, name, url_image, continent_id) VALUES (156, 'Cuba', '', 4);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (157, 'Dominica', '', 4);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (158, 'Dominican Republic', '', 4);
---INSERT INTO country (id, name, url_image, continent_id) VALUES (159, 'El Salvador', '', 4);
+INSERT INTO country (id, name, url_image, continent_id) VALUES (159, 'El Salvador', '', 4);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (160, 'Grenada', '', 4);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (161, 'Guatemala', '', 4);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (162, 'Haiti', '', 4);

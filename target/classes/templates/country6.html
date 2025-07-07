@@ -410,22 +410,19 @@ body {
     <!-- Official Header -->
     <header class="official-header">
         <div class="header-top">
-            
+            <div class="org-logo">
+                <div class="logo-text">🌍 INTERNATIONAL COUNTRY ASSESSMENT BUREAU</div>
+            </div>
             <div class="classification">OFFICIAL DOCUMENT</div>
         </div>
         
         <div class="country-header-main">
-			<img th:src="'https://flagcdn.com/48x36/' + ${country.code} + '.png'"
-						       th:alt="${country.name} + ' flag'"/>
+            <img th:src="${country.urlImage}" th:alt="${country.name + ' Flag'}" class="country-flag-official" />
             <div class="country-title-section">
                 <h1 th:text="${country.name}">Country Name</h1>
                 <div class="country-subtitle">Country Profile & Assessment</div>
             </div>
         </div>
-		
-		
-		
-
     </header>
 
     <!-- Document Info -->
@@ -440,6 +437,7 @@ body {
         <div class="left-panel">
             <div class="country-image-section">
                 <img th:src="${country.urlImage}" th:alt="${country.name}" class="country-image-official" />
+                <div class="image-caption" th:text="${country.name + ' - National Flag'}">Country Flag</div>
             </div>
 
             <div class="key-info-section">
@@ -447,7 +445,7 @@ body {
                 <div class="info-grid">
                     <div class="info-row">
                         <span class="info-label">Population:</span>
-                        <span class="info-value" th:text="${country.population != null ? country.population : 'N/A'}">N/A</span>
+                        <span class="info-value" th:text="${country.population != null ? country.population + 'M' : 'N/A'}">N/A</span>
                     </div>
                     <div class="info-row">
                         <span class="info-label">Capital:</span>
@@ -503,51 +501,51 @@ body {
                     <tbody>
                         <tr>
                             <td>Political Stability</td>
-                            <td th:text="${country.political_stability != null ? country.political_stability + '/100' : 'N/A'}">/100</td>
-                            <td th:class="${country.political_stability != null ? (country.political_stability >= 80 ? 'rating-excellent' : (country.political_stability >= 60 ? 'rating-good' : (country.political_stability >= 40 ? 'rating-fair' : 'rating-poor'))) : ''}"
-                                th:text="${country.political_stability != null ? (country.political_stability >= 80 ? 'Excellent' : (country.political_stability >= 60 ? 'Good' : (country.political_stability >= 40 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
+                            <td th:text="${country.political_stability != null ? country.political_stability + '/10' : 'N/A'}">/10</td>
+                            <td th:class="${country.political_stability != null ? (country.political_stability >= 8 ? 'rating-excellent' : (country.political_stability >= 6 ? 'rating-good' : (country.political_stability >= 4 ? 'rating-fair' : 'rating-poor'))) : ''}"
+                                th:text="${country.political_stability != null ? (country.political_stability >= 8 ? 'Excellent' : (country.political_stability >= 6 ? 'Good' : (country.political_stability >= 4 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
                             <td>Government Stability</td>
                         </tr>
                         <tr>
                             <td>Healthcare System</td>
-                            <td th:text="${country.healthcare != null ? country.healthcare + '/100' : 'N/A'}">/100</td>
-                            <td th:class="${country.healthcare != null ? (country.healthcare >= 80 ? 'rating-excellent' : (country.healthcare >= 60 ? 'rating-good' : (country.healthcare >= 40 ? 'rating-fair' : 'rating-poor'))) : ''}"
-                                th:text="${country.healthcare != null ? (country.healthcare >= 80 ? 'Excellent' : (country.healthcare >= 60 ? 'Good' : (country.healthcare >= 40 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
+                            <td th:text="${country.healthcare != null ? country.healthcare + '/10' : 'N/A'}">/10</td>
+                            <td th:class="${country.healthcare != null ? (country.healthcare >= 8 ? 'rating-excellent' : (country.healthcare >= 6 ? 'rating-good' : (country.healthcare >= 4 ? 'rating-fair' : 'rating-poor'))) : ''}"
+                                th:text="${country.healthcare != null ? (country.healthcare >= 8 ? 'Excellent' : (country.healthcare >= 6 ? 'Good' : (country.healthcare >= 4 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
                             <td>Medical Care Quality</td>
                         </tr>
                         <tr>
                             <td>Education Index</td>
-                            <td th:text="${country.education != null ? country.education + '/100' : 'N/A'}">/100</td>
-                            <td th:class="${country.education != null ? (country.education >= 80 ? 'rating-excellent' : (country.education >= 60 ? 'rating-good' : (country.education >= 40 ? 'rating-fair' : 'rating-poor'))) : ''}"
-                                th:text="${country.education != null ? (country.education >= 80 ? 'Excellent' : (country.education >= 60 ? 'Good' : (country.education >= 40 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
+                            <td th:text="${country.education != null ? country.education + '/10' : 'N/A'}">/10</td>
+                            <td th:class="${country.education != null ? (country.education >= 8 ? 'rating-excellent' : (country.education >= 6 ? 'rating-good' : (country.education >= 4 ? 'rating-fair' : 'rating-poor'))) : ''}"
+                                th:text="${country.education != null ? (country.education >= 8 ? 'Excellent' : (country.education >= 6 ? 'Good' : (country.education >= 4 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
                             <td>Education System Quality</td>
                         </tr>
                         <tr>
                             <td>Environmental Performance</td>
-                            <td th:text="${country.envaironment != null ? country.envaironment + '/100' : 'N/A'}">/100</td>
-                            <td th:class="${country.envaironment != null ? (country.envaironment >= 80 ? 'rating-excellent' : (country.envaironment >= 60 ? 'rating-good' : (country.envaironment >= 40 ? 'rating-fair' : 'rating-poor'))) : ''}"
-                                th:text="${country.envaironment != null ? (country.envaironment >= 80 ? 'Excellent' : (country.envaironment >= 60 ? 'Good' : (country.envaironment >= 40 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
+                            <td th:text="${country.envaironment != null ? country.envaironment + '/10' : 'N/A'}">/10</td>
+                            <td th:class="${country.envaironment != null ? (country.envaironment >= 8 ? 'rating-excellent' : (country.envaironment >= 6 ? 'rating-good' : (country.envaironment >= 4 ? 'rating-fair' : 'rating-poor'))) : ''}"
+                                th:text="${country.envaironment != null ? (country.envaironment >= 8 ? 'Excellent' : (country.envaironment >= 6 ? 'Good' : (country.envaironment >= 4 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
                             <td>Air & Water Quality</td>
                         </tr>
                         <tr>
                             <td>Military Strength</td>
-                            <td th:text="${country.military_strength != null ? country.military_strength + '/100' : 'N/A'}">/100</td>
-                            <td th:class="${country.military_strength != null ? (country.military_strength >= 80 ? 'rating-excellent' : (country.military_strength >= 60 ? 'rating-good' : (country.military_strength >= 40 ? 'rating-fair' : 'rating-poor'))) : ''}"
-                                th:text="${country.military_strength != null ? (country.military_strength >= 80 ? 'Excellent' : (country.military_strength >= 60 ? 'Good' : (country.military_strength >= 40 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
+                            <td th:text="${country.military_strength != null ? country.military_strength + '/10' : 'N/A'}">/10</td>
+                            <td th:class="${country.military_strength != null ? (country.military_strength >= 8 ? 'rating-excellent' : (country.military_strength >= 6 ? 'rating-good' : (country.military_strength >= 4 ? 'rating-fair' : 'rating-poor'))) : ''}"
+                                th:text="${country.military_strength != null ? (country.military_strength >= 8 ? 'Excellent' : (country.military_strength >= 6 ? 'Good' : (country.military_strength >= 4 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
                             <td>Defense Capabilities</td>
                         </tr>
                         <tr>
                             <td>Economic Status</td>
-                            <td th:text="${country.wealth != null ? country.wealth + '/100' : 'N/A'}">/100</td>
-                            <td th:class="${country.wealth != null ? (country.wealth >= 80 ? 'rating-excellent' : (country.wealth >= 60 ? 'rating-good' : (country.wealth >= 40 ? 'rating-fair' : 'rating-poor'))) : ''}"
-                                th:text="${country.wealth != null ? (country.wealth >= 80 ? 'Wealthy' : (country.wealth >= 60 ? 'Prosperous' : (country.wealth >= 40 ? 'Developing' : 'Poor'))) : 'N/A'}">N/A</td>
+                            <td th:text="${country.wealth != null ? country.wealth + '/10' : 'N/A'}">/10</td>
+                            <td th:class="${country.wealth != null ? (country.wealth >= 8 ? 'rating-excellent' : (country.wealth >= 6 ? 'rating-good' : (country.wealth >= 4 ? 'rating-fair' : 'rating-poor'))) : ''}"
+                                th:text="${country.wealth != null ? (country.wealth >= 8 ? 'Wealthy' : (country.wealth >= 6 ? 'Prosperous' : (country.wealth >= 4 ? 'Developing' : 'Poor'))) : 'N/A'}">N/A</td>
                             <td>GDP & Living Standards</td>
                         </tr>
                         <tr>
                             <td>Travel Safety</td>
-                            <td th:text="${country.travel_safty != null ? country.travel_safty + '/100' : 'N/A'}">/100</td>
-                            <td th:class="${country.travel_safty != null ? (country.travel_safty >= 80 ? 'rating-excellent' : (country.travel_safty >= 60 ? 'rating-good' : (country.travel_safty >= 40 ? 'rating-fair' : 'rating-poor'))) : ''}"
-                                th:text="${country.travel_safty != null ? (country.travel_safty >= 80 ? 'Very Safe' : (country.travel_safty >= 60 ? 'Safe' : (country.travel_safty >= 40 ? 'Moderate' : 'Risky'))) : 'N/A'}">N/A</td>
+                            <td th:text="${country.travel_safty != null ? country.travel_safty + '/10' : 'N/A'}">/10</td>
+                            <td th:class="${country.travel_safty != null ? (country.travel_safty >= 8 ? 'rating-excellent' : (country.travel_safty >= 6 ? 'rating-good' : (country.travel_safty >= 4 ? 'rating-fair' : 'rating-poor'))) : ''}"
+                                th:text="${country.travel_safty != null ? (country.travel_safty >= 8 ? 'Very Safe' : (country.travel_safty >= 6 ? 'Safe' : (country.travel_safty >= 4 ? 'Moderate' : 'Risky'))) : 'N/A'}">N/A</td>
                             <td>Tourist Safety Index</td>
                         </tr>
                     </tbody>
