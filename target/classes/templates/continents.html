@@ -1,55 +1,82 @@
-<!--
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Continents</title>
-    <link rel="stylesheet" href="/stile.css?version=2" />
-  </head>
-
-  <body>
-	<div></div><a href="/"><img src="/logo-siw.png" width="50%"/></a></div>
-	
-    <h1>Continents</h1>
-    <ul>
-      <li th:each="continent : ${continents}">
-        <a th:href="@{'/continentCountries' + '/' + ${continent.id}}"
-           th:text="${continent.name}">nomeContinente</a>
-      </li>
-    </ul>
-  </body>
-
-</html>
--->
-
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Continents</title>
-    <link rel="stylesheet" href="/css/continents.css" />
+  <title>Continents</title>
+  <link rel="stylesheet" href="/css/stile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      background-image: url('/img/background-blue-map.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .continent-page-title {
+      font-size: 2.8rem;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 2rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .continent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .continent-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      text-decoration: none;
+      color: #1a1a1a;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .continent-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .continent-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #1f3c88;
+    }
+
+    .continent-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .continent-count {
+      font-size: 1rem;
+      color: #555;
+    }
+  </style>
 </head>
-
 <body>
-    
+  <header>
+    <h1 class="continent-page-title">Continents</h1>
+  </header>
 
-    <div class="container">
-        <div class="header">
-            <h1>🌍 Continents</h1>
-            <p>Select a continent to explore its countries</p>
-        </div>
+  <div class="continent-grid">
+    <a class="continent-card"
+       th:each="continent : ${continents}"
+       th:href="@{'/continentCountries/' + ${continent.id}}">
 
-        <div class="continent-grid">
-            <a class="continent-card"
-               th:each="continent : ${continents}"
-               th:href="@{'/continentCountries/' + ${continent.id}}">
-               
-                <span class="continent-count" th:text="${continent.countries.size()} + ' countries'">XX countries</span>
-				<span class="continent-icon" th:text="${continent.icon}">🌍</span>
-                <h2 class="continent-name" th:text="${continent.name}">Continent Name</h2>
-            <!--    <p class="continent-description" th:text="${continent.description}">Continent description</p> -->
-            </a>
-        </div>
-    </div>
+      <i class="fa-solid fa-globe continent-icon"></i>
+      <div class="continent-name" th:text="${continent.name}">Continent Name</div>
+      <div class="continent-count" th:text="${continent.countries.size()} + ' countries'">XX countries</div>
+    </a>
+  </div>
 </body>
 </html>

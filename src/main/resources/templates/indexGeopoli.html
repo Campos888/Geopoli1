@@ -1,37 +1,124 @@
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-  <title>Home</title>
+  <title>Geopoli - Home</title>
+  <link rel="stylesheet" href="/css/stile.css" />
+  <script src="https://unpkg.com/globe.gl"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('/img/background-blue-map.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #1a1a1a;
+      overflow: hidden;
+    }
+
+    .homepage-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 4rem;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .homepage-left {
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .homepage-title {
+      font-size: 2.5rem;
+      color: #1f3c88;
+      margin-bottom: 1.5rem;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .button-link,
+    button {
+      background-color: #357edd;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      min-width: 180px;
+    }
+
+    .button-link:hover,
+    button:hover {
+      background-color: #265fab;
+    }
+
+    #globeViz {
+      width: 500px;
+      height: 500px;
+    }
+
+    @media (max-width: 900px) {
+      .homepage-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      #globeViz {
+        width: 350px;
+        height: 350px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Home Page</h1>
+  <div class="homepage-wrapper">
+    <div class="homepage-left">
+      <h1 class="homepage-title">Geopoli 360</h1>
 
-  <ul>
-    <li><a href="/continents">Continents</a></li>
-  </ul>
+      <div class="button-group">
+        <a href="/continents" class="button-link">Explore Continents</a>
 
-  
-  <!-- logut solo se sei loggato -->
-   <div sec:authorize="isAuthenticated()">
-     <form action="/logout" method="post">
-       <button type="submit">Logout</button>
-     </form>
-   </div>
-   
+        <div sec:authorize="!isAuthenticated()">
+          <a href="/login" class="button-link">Login</a>
+          <a href="/register" class="button-link">Register</a>
+        </div>
 
-   <!-- login solo se non sei loggato puoi loggarti-->
-    <div sec:authorize="!isAuthenticated()">
-      <a href="/login">Login</a>
+        <div sec:authorize="isAuthenticated()">
+          <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+          </form>
+        </div>
+      </div>
     </div>
- 
-	<!-- login solo se non sei loggato puoi registrarti-->
-	 <div sec:authorize="!isAuthenticated()">
-	   	<a href="/register">Register</a>
-	 </div>
-	
-	
-	
+
+    <div id="globeViz"></div>
+  </div>
+
+  <script>
+    const world = Globe()(document.getElementById('globeViz'));
+
+    world
+      .globeImageUrl('//unpkg.com/three-globe/example/img/earth-day.jpg')
+      .backgroundColor('rgba(0,0,0,0)')
+      .controls().autoRotate = true;
+
+    world.controls().autoRotateSpeed = 0.8;
+  </script>
 </body>
 </html>
