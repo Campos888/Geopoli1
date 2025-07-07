@@ -1,89 +1,59 @@
-
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Country</title>
-    <link rel="stylesheet" href="/css/stile.css?version=2" />
-  </head>
+<head>
+  <title>Country</title>
+  <link rel="stylesheet" href="/css/stile.css" />
+</head>
+<body>
+  <header>
+    <h1 th:text="${country.name}">Country</h1>
+  </header>
 
-  <body>
-
-    <div th:if="${country}">
-      <h1 th:text="${country.name}">countryName</h1>
-
+  <div class="container" th:if="${country}">
+    <div>
+      <img th:src="${country.urlImage}" alt="flag image" width="300" />
       <div>
-        <img th:src="${country.urlImage}" alt="flag image" width="300" />
-        <div>
-          <a th:href="@{'/admin/formUpdateCountryImage/' + ${country.id}}">Update Image</a>
-        </div>
-		<div>
-		  <a th:href="@{'/admin/deleteCountry/' + ${country.id}}">Delete</a>
-		</div>
+        <a class="button-link" th:href="@{'/admin/formUpdateCountryImage/' + ${country.id}}">Update Image</a>
+        <a class="button-link" th:href="@{'/admin/deleteCountry/' + ${country.id}}">Delete</a>
       </div>
-
-	  
-	  
-
-
-	  <!-- ✅ COUNTRY METRICS SECTION -->
-	        <hr/>
-	        <h2>Country Info</h2>
-	        <ul>
-	          <li>Danger Level: <span th:text="${country.danger}">0</span></li>
-	          <li>Healthcare: <span th:text="${country.healthcare}">0</span></li>
-	          <li>Pollution: <span th:text="${country.pollusion}">0</span></li>
-	          <li>Wealth: <span th:text="${country.wealth}">0</span></li>
-	          <li>Temperature: <span th:text="${country.temperature}">0</span> °C</li>
-	        </ul>
-	  
-	  
-	  
-	  
-	  
-	  
-      <!-- ✅ COMMENTS SECTION -->
-      <hr/>
-      <h2>Comments</h2>
-
-      <div th:if="${country.comments != null and !country.comments.isEmpty()}">
-        <ul>
-          <li th:each="comment : ${country.comments}">
-            <strong th:text="${comment.user.credentials.username}">Username</strong>:
-            <span th:text="${comment.text}">Comment text</span>
-            <small th:text="${#temporals.format(comment.createdAt, 'dd/MM/yyyy HH:mm')}"></small>
-          </li>
-        </ul>
-      </div>
-
-      <div th:unless="${country.comments != null and !country.comments.isEmpty()}">
-        <p>No comments yet. Be the first to comment!</p>
-      </div>
-	  
-	  
-	  
-	  
-	 
-
-	  
-      <!-- ✅ COMMENT FORM -->
-      <hr/>
-      <h3>Add a Comment</h3>
-      <form action="/addComment" method="post">
-        <input type="hidden" name="countryId" th:value="${country.id}" />
-        <textarea name="text" rows="4" cols="50" placeholder="Write your comment..." required></textarea><br/>
-        <button type="submit">Post</button>
-      </form>
     </div>
-	
-	
-	
-	
-	
-	
-	
-    <div th:unless="${country}">
-      <p>Non esiste</p>
+
+    <hr />
+    <h2>Country Info</h2>
+    <ul>
+      <li>Danger Level: <span th:text="${country.danger}" class="danger">0</span></li>
+      <li>Healthcare: <span th:text="${country.healthcare}" class="safe">0</span></li>
+      <li>Pollution: <span th:text="${country.pollusion}">0</span></li>
+      <li>Wealth: <span th:text="${country.wealth}">0</span></li>
+      <li>Temperature: <span th:text="${country.temperature}">0</span> °C</li>
+    </ul>
+
+    <hr />
+    <h2>Comments</h2>
+    <div th:if="${country.comments != null and !country.comments.isEmpty()}">
+      <ul>
+        <li th:each="comment : ${country.comments}">
+          <strong th:text="${comment.user.credentials.username}">Username</strong>: 
+          <span th:text="${comment.text}">Comment text</span>
+          <small th:text="${#temporals.format(comment.createdAt, 'dd/MM/yyyy HH:mm')}"></small>
+        </li>
+      </ul>
     </div>
-  </body>
+    <div th:unless="${country.comments != null and !country.comments.isEmpty()}">
+      <p>No comments yet. Be the first to comment!</p>
+    </div>
+
+    <hr />
+    <h3>Add a Comment</h3>
+    <form action="/addComment" method="post">
+      <input type="hidden" name="countryId" th:value="${country.id}" />
+      <textarea name="text" rows="4" placeholder="Write your comment..." required></textarea><br />
+      <button type="submit">Post</button>
+    </form>
+  </div>
+
+  <div class="container" th:unless="${country}">
+    <p>Non esiste</p>
+  </div>
+</body>
 </html>
