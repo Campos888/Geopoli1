@@ -45,70 +45,223 @@ public class Country {
 	
 	private String code;
 	
-	private Integer danger;
+	
+	//Key features
+	@Column(name = "total_pupulation")
+	private Integer population;
+	private String capital;
+	private Integer area;
+	private String currency;
+	private String government;
+	private Integer current_temperautre;
+	private String conflict_status;  // might b changed to enum
+	
+	
+	
+	
+	// Metrics
+	private Integer political_stability;
 	private Integer healthcare;
-	private Integer pollusion;
+	private Integer education;
+	private Integer envaironment;
+	private Integer military_strength;
 	private Integer wealth;
-	private Integer temperature;
+	private Integer travel_safty;
+	
+
+	
+	
 	
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getName() {
 		return Name;
 	}
 
+
 	public void setName(String name) {
 		Name = name;
 	}
+
 
 	public String getUrlImage() {
 		return urlImage;
 	}
 
+
 	public void setUrlImage(String urlImage) {
 		this.urlImage = urlImage;
 	}
 
+
 	public List<Comment> getComments() {
 		return comments;
 	}
-	
+
+
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-	
-	
-	
-	
-	
-	/*
-	public DangerLevel getDangerLevel() {
-		return dangerLevel;
-	}
 
-	public void setDangerLevel(DangerLevel dangerLevel) {
-		this.dangerLevel = dangerLevel;
-	}
-	*/
-	
-	
-	
-	
-	
+
 	public String getCode() {
 		return code;
 	}
 
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
+
+	public Integer getPopulation() {
+		return population;
+	}
+
+
+	public void setPopulation(Integer population) {
+		this.population = population;
+	}
+
+
+	public String getCapital() {
+		return capital;
+	}
+
+
+	public void setCapital(String capital) {
+		this.capital = capital;
+	}
+
+
+	public Integer getArea() {
+		return area;
+	}
+
+
+	public void setArea(Integer area) {
+		this.area = area;
+	}
+
+
+	public String getCurrency() {
+		return currency;
+	}
+
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+
+	public String getGovernment() {
+		return government;
+	}
+
+
+	public void setGovernment(String government) {
+		this.government = government;
+	}
+
+
+	public Integer getCurrent_temperautre() {
+		return current_temperautre;
+	}
+
+
+	public void setCurrent_temperautre(Integer current_temperautre) {
+		this.current_temperautre = current_temperautre;
+	}
+
+
+	public String getConflict_status() {
+		return conflict_status;
+	}
+
+
+	public void setConflict_status(String conflict_status) {
+		this.conflict_status = conflict_status;
+	}
+
+
+	public Integer getPolitical_stability() {
+		return political_stability;
+	}
+
+
+	public void setPolitical_stability(Integer political_stability) {
+		this.political_stability = political_stability;
+	}
+
+
+	public Integer getHealthcare() {
+		return healthcare;
+	}
+
+
+	public void setHealthcare(Integer healthcare) {
+		this.healthcare = healthcare;
+	}
+
+
+	public Integer getEducation() {
+		return education;
+	}
+
+
+	public void setEducation(Integer education) {
+		this.education = education;
+	}
+
+
+	public Integer getEnvaironment() {
+		return envaironment;
+	}
+
+
+	public void setEnvaironment(Integer envaironment) {
+		this.envaironment = envaironment;
+	}
+
+
+	public Integer getMilitary_strength() {
+		return military_strength;
+	}
+
+
+	public void setMilitary_strength(Integer military_strength) {
+		this.military_strength = military_strength;
+	}
+
+
+	public Integer getWealth() {
+		return wealth;
+	}
+
+
+	public void setWealth(Integer wealth) {
+		this.wealth = wealth;
+	}
+
+
+	public Integer getTravel_safty() {
+		return travel_safty;
+	}
+
+
+	public void setTravel_safty(Integer travel_safty) {
+		this.travel_safty = travel_safty;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -116,50 +269,6 @@ public class Country {
 	}
 	
 	
-	
-	
-
-
-	public Integer getDanger() {
-		return danger;
-	}
-
-	public void setDanger(Integer danger) {
-		this.danger = danger;
-	}
-
-	public Integer getHealthcare() {
-		return healthcare;
-	}
-
-	public void setHealthcare(Integer healthcare) {
-		this.healthcare = healthcare;
-	}
-
-	public Integer getPollusion() {
-		return pollusion;
-	}
-
-	public void setPollusion(Integer pollusion) {
-		this.pollusion = pollusion;
-	}
-
-	public Integer getWealth() {
-		return wealth;
-	}
-
-	public void setWealth(Integer wealth) {
-		this.wealth = wealth;
-	}
-
-	public Integer getTemperature() {
-		return temperature;
-	}
-
-	public void setTemperature(Integer temperature) {
-		this.temperature = temperature;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

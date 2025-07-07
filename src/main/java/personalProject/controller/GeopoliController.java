@@ -51,6 +51,10 @@ public class GeopoliController {
 		return "countries2.html";
 	}
 	
+	@GetMapping("/country5")
+	public String showCountry4() {
+		return "country5.html";
+	}
 	
 	
 	
@@ -86,7 +90,7 @@ public class GeopoliController {
 
 
 	    model.addAttribute("country", country);
-	    return "country.html";
+	    return "country6.html";
 	}
 
 	

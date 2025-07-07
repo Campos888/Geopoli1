@@ -23,22 +23,21 @@
       </div>
 
 	  
-	  <p>Danger level: 
-	    <span th:switch="${country.dangerLevel.name()}">
-	      <span th:case="'LOW'">LOW</span>
-	      <span th:case="'MEDIUM'">MEDIUM</span>
-	      <span th:case="'HIGH'">HIGH</span>
-	      <span th:case="*">UNKNOWN</span>
-	    </span>
-	  </p>
+	  
 
 
+	  <!-- ✅ COUNTRY METRICS SECTION -->
+	        <hr/>
+	        <h2>Country Info</h2>
+	        <ul>
+	          <li>Danger Level: <span th:text="${country.danger}">0</span></li>
+	          <li>Healthcare: <span th:text="${country.healthcare}">0</span></li>
+	          <li>Pollution: <span th:text="${country.pollusion}">0</span></li>
+	          <li>Wealth: <span th:text="${country.wealth}">0</span></li>
+	          <li>Temperature: <span th:text="${country.temperature}">0</span> °C</li>
+	        </ul>
 	  
 	  
-	  <div class="danger-animation">
-	    <img src="/images/stickman_machinegun1.jpg" alt="Stickman 1" />
-	    <img src="/images/stickman_machinegun2.png" alt="Stickman 2" />
-	  </div>
 	  
 	  
 	  
