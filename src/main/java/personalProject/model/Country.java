@@ -49,11 +49,18 @@ public class Country {
 	//Key features
 	@Column(name = "total_pupulation")
 	private Integer population;
+	
 	private String capital;
+	
 	private Integer area;
+	
 	private String currency;
+	
 	private String government;
+	
+	
 	private Integer current_temperautre;
+	
 	private String conflict_status;  // might b changed to enum
 	
 	
@@ -61,11 +68,17 @@ public class Country {
 	
 	// Metrics
 	private Integer political_stability;
+	
 	private Integer healthcare;
+	
 	private Integer education;
+	
 	private Integer envaironment;
+	
 	private Integer military_strength;
+	
 	private Integer wealth;
+	
 	private Integer travel_safty;
 	
 
@@ -212,6 +225,8 @@ public class Country {
 		this.healthcare = healthcare;
 	}
 
+	
+	
 
 	public Integer getEducation() {
 		return education;
@@ -252,6 +267,8 @@ public class Country {
 		this.wealth = wealth;
 	}
 
+	
+	
 
 	public Integer getTravel_safty() {
 		return travel_safty;

@@ -7,6 +7,8 @@ INSERT INTO continent (id, name, icon) VALUES (5, 'South America', '🌴');
 INSERT INTO continent (id, name, icon) VALUES (6, 'Oceania', '🌊');
 INSERT INTO continent (id, name, icon) VALUES (7, 'Antarctica', '🧊');
 
+
+
 -- AFRICA (continent_id = 1)
 INSERT INTO country (id, name, url_image, code, continent_id) VALUES (1, 'Algeria', '', 'dz', 1);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (2, 'Angola', '', 1);
@@ -101,7 +103,7 @@ INSERT INTO country (id, name, url_image, continent_id) VALUES (85, 'Pakistan', 
 INSERT INTO country (id, name, url_image, continent_id) VALUES (86, 'Palestine', '', 2);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (87, 'Philippines', '', 2);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (88, 'Qatar', '', 2);
-INSERT INTO country (id, name, url_image, continent_id) VALUES (89, 'Russia', '', 2);
+--INSERT INTO country (id, name, url_image, continent_id) VALUES (89, 'Russia', '', 2);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (90, 'Saudi Arabia', '', 2);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (91, 'Singapore', '', 2);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (92, 'South Korea', '', 2);
@@ -124,7 +126,6 @@ INSERT INTO country (id, name, url_image, continent_id) VALUES (104, 'Yemen', ''
 
 
 -- EUROPE
---INSERT INTO country (id, name, url_image, continent_id, code, total_pupulation, capital, area, currency, government, current_temperautre, conflict_status) VALUES (105, 'Albania', '', 3, '');
 INSERT INTO country (id, name, url_image, continent_id) VALUES (106, 'Andorra', '', 3);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (107, 'Austria', '', 3);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (108, 'Belarus', '', 3);
@@ -160,7 +161,10 @@ INSERT INTO country (id, name, url_image, continent_id) VALUES (137, 'Portugal',
 INSERT INTO country (id, name, url_image, continent_id) VALUES (138, 'Romania', '', 3);
 
 
-INSERT INTO country (id, name, url_image, continent_id, code, total_population) VALUES (139, 'Russia', '', 3, 'ru', 146000000);
+INSERT INTO country (id, name, url_image, code, total_pupulation, capital, area, currency, government, current_temperautre, conflict_status,    political_stability, healthcare, education, envaironment, military_strength, wealth, travel_safty, continent_id) VALUES (139, 'Russia', '/images/russia.webp', 'ru', 146000000, 'Moscow', 17098242, 'Russian Ruble', 'Federal semi-presidential republic', 25, 'Involved in regional conflicts', 30, 60, 70, 45, 90, 50, 40, 3);
+
+
+
 --INSERT INTO country (id, name, url_image, continent_id, code, total_pupulation, capital, area, currency, government, current_temperautre, conflict_status) VALUES (139, 'Russia', '', 3, 'ru', 146000000, "Moscow", "17098242", "Russian Ruble", "Federal semi-presidential republic", 15, "nvolved in regional conflicts");
 INSERT INTO country (id, name, url_image, continent_id) VALUES (140, 'San Marino', '', 3);
 INSERT INTO country (id, name, url_image, continent_id) VALUES (141, 'Serbia', '', 3);
