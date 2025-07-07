@@ -30,7 +30,18 @@ public class AuthConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.GET, "/", "/index","/continents","/continentCountries/{continentId}", "/country/{countryId}", "/globe", "/login", "/register", "/css/**", "/images/**", "/favicon.ico").permitAll()
+            		.requestMatchers(HttpMethod.GET,
+            			    "/", "/index",
+            			    "/continents",
+            			    "/continentCountries/**",  // ✅ QUESTO È FONDAMENTALE
+            			    "/country/**",
+            			    "/globe",
+            			    "/login", "/register",
+            			    "/css/**", "/images/**", "/favicon.ico"
+            			).permitAll()
+
+
+
                 .requestMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                 .requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority(ADMIN_ROLE)
                  .requestMatchers(HttpMethod.POST, "/admin/**").hasAuthority(ADMIN_ROLE)
