@@ -1,6 +1,8 @@
 package personalProject.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.validation.Valid;
+
 import personalProject.model.Comment;
 import personalProject.model.Continent;
 import personalProject.model.Country;
@@ -29,35 +33,10 @@ public class GeopoliController {
 	ContinentService continentService;
 	@Autowired
 	CommentService commentService;
+	@Autowired
+	CountryService countriesService;
 	
-	
-	@GetMapping("/globe")
-    public String showGlobePage() {
-        return "globe"; // refers to globe.html in /templates
-    }
-	
-	@GetMapping("/globe2")
-    public String showGlobePage2() {
-        return "globe2"; // refers to globe.html in /templates
-    }
-	
-	@GetMapping("/continents2")
-	public String showContinents2() {
-		return "continents2.html";
-	}
-	
-	@GetMapping("/countries2")
-	public String showCountries2() {
-		return "countries2.html";
-	}
-	
-	@GetMapping("/country5")
-	public String showCountry4() {
-		return "country5.html";
-	}
-	
-	
-	
+
 	
 	
 	@GetMapping("/")
@@ -75,9 +54,6 @@ public class GeopoliController {
 	
 	@GetMapping("/continentCountries/{continentId}")
 	public String showContinentCountries(@PathVariable("continentId") Long continentId, Model model) {
-		
-		
-		
 		model.addAttribute("continent", this.continentService.getContinentById(continentId));
 		model.addAttribute("continentCountries", this.continentService.getAllCountries(continentId));
 		return "countries.html";
@@ -87,10 +63,8 @@ public class GeopoliController {
 	@GetMapping("/country/{id}")
 	public String getCountry(@PathVariable("id") Long id, Model model) {
 	    Country country = countryService.getCountryById(id);
-
-
 	    model.addAttribute("country", country);
-	    return "country6.html";
+	    return "country.html";
 	}
 
 	
@@ -107,7 +81,6 @@ public class GeopoliController {
 	                                 @RequestParam("urlImage") String urlImage,
 	                                 Model model) {
 	    Country country = countryService.getCountryById(id);
-
 	    // Update and save the new image URL
 	    country.setUrlImage(urlImage);
 	    countryService.save(country);
@@ -142,6 +115,40 @@ public class GeopoliController {
 	    countryService.deleteCountryById(countryId);
 	    return "redirect:/continents";
 	}
+	
+	
+	
+	
+	
+	@GetMapping("/search")
+	public String searchCountry(
+	    @RequestParam("query") String query,
+	    @RequestParam("continentId") Long continentId,
+	    Model model
+	) {
+		model.addAttribute("continent", continentService.getContinentById(continentId)); // ✅
+	    List<Country> results = countryService.searchCountriesInContinentByNameStartingWith(query, continentId);
+	    System.out.println("Searching for: " + query);
+	    System.out.println("Results: " + results.size());
+
+	    model.addAttribute("continentCountries", results);
+	    model.addAttribute("query", query);
+	    return "countries.html";
+	}
+
+    
+	@GetMapping("/api/search")
+	@ResponseBody
+	public Map<String, Object> search(@RequestParam("query") String query) {
+	    List<Country> countries= countryService.searchCountriesByNameStartingWith(query);
+
+	    Map<String, Object> result = new HashMap<>();
+	    result.put("continentCountries", countries);
+	  
+	    return result;
+	}
+
+	
 
 
 

@@ -37,7 +37,7 @@ public class AuthConfiguration {
             			    "/country/**",
             			    "/globe",
             			    "/login", "/register",
-            			    "/css/**", "/images/**", "/favicon.ico"
+            			    "/css/**", "/images/**", "/favicon.ico", "/api/search", "/search"
             			).permitAll()
 
 

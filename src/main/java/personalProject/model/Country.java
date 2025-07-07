@@ -34,7 +34,7 @@ public class Country {
 	*/
 	
 	@NotBlank
-	private String Name;
+	private String name;
 	
 	@Column(name = "url_image")
 	private String urlImage;
@@ -97,12 +97,12 @@ public class Country {
 
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 
 	public void setName(String name) {
-		Name = name;
+		name = name;
 	}
 
 
@@ -282,7 +282,7 @@ public class Country {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Name);
+		return Objects.hash(name);
 	}
 	
 	
@@ -295,7 +295,7 @@ public class Country {
 		if (getClass() != obj.getClass())
 			return false;
 		Country other = (Country) obj;
-		return Objects.equals(Name, other.Name);
+		return Objects.equals(name, other.name);
 	}
 	
 	
