@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Country</title>
+</head>
+<body>
+
+<h1>Update Country</h1>
+
+<form th:action="@{/admin/updateCountry}" method="post" th:object="${country}">
+    <!-- Hidden ID field -->
+    <input type="hidden" th:field="*{id}" />
+    
+    <h2>Basic Information</h2>
+    
+    <label for="name">Country Name:</label>
+    <input type="text" th:field="*{name}" required />
+    <br/><br/>
+    
+    <label for="code">Country Code:</label>
+    <input type="text" th:field="*{code}" placeholder="e.g., us, it, fr" required />
+    <br/><br/>
+    
+    <label for="urlImage">Image URL:</label>
+    <input type="text" th:field="*{urlImage}" placeholder="Optional image URL" />
+    <br/><br/>
+    
+    <h2>Key Features</h2>
+    
+    <label for="population">Population:</label>
+    <input type="number" th:field="*{population}" min="0" />
+    <br/><br/>
+    
+    <label for="capital">Capital:</label>
+    <input type="text" th:field="*{capital}" />
+    <br/><br/>
+    
+    <label for="area">Area (km²):</label>
+    <input type="number" th:field="*{area}" min="0" />
+    <br/><br/>
+    
+    <label for="currency">Currency:</label>
+    <input type="text" th:field="*{currency}" />
+    <br/><br/>
+    
+    <label for="government">Government Type:</label>
+    <input type="text" th:field="*{government}" />
+    <br/><br/>
+    
+    <label for="current_temperautre">Current Temperature (°C):</label>
+    <input type="number" th:field="*{current_temperautre}" min="-50" max="50" />
+    <br/><br/>
+    
+    <label for="conflict_status">Conflict Status:</label>
+    <input type="text" th:field="*{conflict_status}" placeholder="e.g., Peaceful, Minor Conflict, Active Conflict" />
+    <br/><br/>
+    
+    <h2>Metrics (0-100)</h2>
+    
+    <label for="political_stability">Political Stability:</label>
+    <input type="number" th:field="*{political_stability}" min="0" max="100" />
+    <br/><br/>
+    
+    <label for="healthcare">Healthcare:</label>
+    <input type="number" th:field="*{healthcare}" min="0" max="100" />
+    <br/><br/>
+    
+    <label for="education">Education:</label>
+    <input type="number" th:field="*{education}" min="0" max="100" />
+    <br/><br/>
+    
+    <label for="envaironment">Environment:</label>
+    <input type="number" th:field="*{envaironment}" min="0" max="100" />
+    <br/><br/>
+    
+    <label for="military_strength">Military Strength:</label>
+    <input type="number" th:field="*{military_strength}" min="0" max="100" />
+    <br/><br/>
+    
+    <label for="wealth">Wealth:</label>
+    <input type="number" th:field="*{wealth}" min="0" max="100" />
+    <br/><br/>
+    
+    <label for="travel_safty">Travel Safety:</label>
+    <input type="number" th:field="*{travel_safty}" min="0" max="100" />
+    <br/><br/>
+    
+    <hr/>
+    
+    <button type="submit">Update Country</button>
+    <a th:href="@{'/country/' + ${country.id}}">Cancel</a>
+    
+</form>
+
+</body>
+</html>
