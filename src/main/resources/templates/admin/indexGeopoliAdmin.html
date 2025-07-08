@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Geopoli Admin Dashboard</title>
+    //<link rel="stylesheet" href="/css/country.css" />
+    <link rel="stylesheet" href="/css/indexGeopoliAdmin.css" />
+	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Official Admin Header -->
+        <div class="admin-header">
+            <div class="official-header">
+                <div class="header-top">
+                    <div class="org-logo">
+                        <div class="logo-text">🌍 GEOPOLI ADMINISTRATION SYSTEM</div>
+                    </div>
+                    <div class="classification">ADMINISTRATIVE DASHBOARD</div>
+                </div>
+                
+                <div class="admin-header-main">
+                    <i class="fas fa-shield-alt admin-icon-large"></i>
+                    <div class="admin-title-section">
+                        <h1>Geopoli Admin</h1>
+                        <div class="admin-subtitle-header">System Management & Control Panel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Admin Content -->
+        <div class="admin-content">
+            <!-- Manage Countries Card (Left) -->
+            <div class="manage-countries-card">
+                <div class="card-header">
+                    <i class="fas fa-globe-americas card-icon"></i>
+                    <h2 class="card-title">Manage Countries</h2>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="card-actions">
+                    <a href="/admin/continents" class="admin-btn">
+                        <i class="fas fa-globe"></i> View All Continents
+                    </a>
+                </div>
+            </div>
+
+            <!-- Add Country Card (Right) -->
+            <div class="add-country-card">
+                <div class="small-card-header">
+                    <i class="fas fa-plus-circle add-card-icon"></i>
+                    <h3 class="small-card-title">Add Country</h3>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="small-card-actions">
+                    <a href="/admin/addCountry" class="admin-btn admin-btn-success admin-btn-full">
+                        <i class="fas fa-plus"></i> Add New Country
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Footer -->
+        <div class="document-info" style="margin-top: 2rem; text-align: center;">
+            <div th:text="'Last System Update: ' + ${#temporals.format(#temporals.createNow(), 'dd MMMM yyyy')} + ' | Next Maintenance: Scheduled'">Last System Update: January 15, 2025 | Next Maintenance: Scheduled</div>
+            <div style="margin-top: 0.5rem;">
+                <a href="/" class="admin-btn admin-btn-secondary" style="margin-right: 1rem;">
+                    <i class="fas fa-home"></i> Return to Site
+                </a>
+                <a href="/logout" class="admin-btn" style="background-color: #dc3545;">
+                    <i class="fas fa-sign-out-alt"></i> Secure Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

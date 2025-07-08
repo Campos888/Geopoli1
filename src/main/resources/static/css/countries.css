@@ -1,0 +1,93 @@
+    body {
+      background-image: url('/img/background-blue-map.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .country-page-title {
+      font-size: 2.6rem;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 2rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .country-page-description {
+      font-size: 1.1rem;
+      text-align: center;
+      color: #eef2f8;
+      max-width: 800px;
+      margin: 0.5rem auto 2rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .search-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .countries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
+    }
+
+    .country-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-left: 6px solid #1f3c88;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: #1a1a1a;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .country-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .country-flag img {
+      width: 64px;
+      height: 48px;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .country-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .country-code-badge {
+      background-color: #e1eafc;
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #1f3c88;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .country-card {
+        padding: 1rem;
+      }
+    }

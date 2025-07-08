@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
+import personalProject.service.ContinentService;
 import personalProject.service.CountryService;
 
 @Controller
@@ -25,6 +26,9 @@ public class AdminController {
 
     @Autowired
     CountryService countryService;
+    
+    @Autowired
+    ContinentService continentService;
     
     
     //@Autowired
@@ -38,6 +42,20 @@ public class AdminController {
         return "admin/indexGeopoliAdmin";
     }
 
+    
+    @GetMapping("/continents")
+    public String adminContinents(Model model) {
+        model.addAttribute("continents", continentService.getAllContinents());
+        return "admin/continentsAdmin";
+    }
+    
+    @GetMapping("/continentCountries/{continentId}")
+	public String showContinentCountries(@PathVariable("continentId") Long continentId, Model model) {
+		model.addAttribute("continent", this.continentService.getContinentById(continentId));
+		model.addAttribute("continentCountries", this.continentService.getAllCountries(continentId));
+		return "admin/countries.html";
+	}
+    
     /*
     @GetMapping("/books")
     public String adminBooks(Model model) {

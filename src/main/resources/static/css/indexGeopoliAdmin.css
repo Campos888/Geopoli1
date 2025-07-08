@@ -1,0 +1,297 @@
+    .admin-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .admin-header {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-left: 6px solid #1f3c88;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 2.8rem;
+        color: #1f3c88;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    .admin-subtitle {
+        color: #666;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+
+    .admin-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .manage-countries-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-left: 6px solid #1f3c88;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .manage-countries-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .add-country-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-left: 6px solid #28a745;
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: fit-content;
+        max-width: 280px;
+    }
+
+    .add-country-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #eee;
+    }
+
+    .small-card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .card-icon {
+        font-size: 2.5rem;
+        margin-right: 1rem;
+        color: #1f3c88;
+    }
+
+    .add-card-icon {
+        font-size: 1.5rem;
+        margin-right: 0.8rem;
+        color: #28a745;
+    }
+
+    .card-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #1f3c88;
+        margin: 0;
+    }
+
+    .small-card-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #28a745;
+        margin: 0;
+    }
+
+    .card-description {
+        color: #666;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .small-card-description {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-item {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+        border-left: 4px solid #1f3c88;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #1f3c88;
+        display: block;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        color: #666;
+        margin-top: 0.3rem;
+    }
+
+    .admin-btn {
+        background-color: #357edd;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+    }
+
+    .admin-btn:hover {
+        background-color: #265fab;
+        transform: translateY(-1px);
+    }
+
+    .admin-btn-success {
+        background-color: #28a745;
+    }
+
+    .admin-btn-success:hover {
+        background-color: #218838;
+    }
+
+    .admin-btn-secondary {
+        background-color: #6c757d;
+    }
+
+    .admin-btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+    .admin-btn-full {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.8rem;
+    }
+
+    .card-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .small-card-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .official-header {
+        background-color: #1f3c88;
+        color: white;
+        padding: 1rem 2rem;
+        margin: -2rem -2rem 2rem -2rem;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .org-logo .logo-text {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .classification {
+        font-size: 0.9rem;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 0.3rem 0.8rem;
+        border-radius: 4px;
+    }
+
+    .admin-header-main {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .admin-icon-large {
+        font-size: 3rem;
+        color: white;
+    }
+
+    .admin-title-section h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .admin-subtitle-header {
+        margin: 0;
+        opacity: 0.9;
+        font-size: 1rem;
+    }
+
+    .document-info {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 2rem;
+        border-left: 4px solid #1f3c88;
+    }
+
+    .quick-stats {
+        background-color: #e1eafc;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .quick-stats h5 {
+        margin: 0 0 0.8rem 0;
+        color: #1f3c88;
+        font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .admin-content {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .card-actions {
+            flex-direction: column;
+        }
+        
+        .admin-header-main {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+    }
