@@ -53,7 +53,7 @@ public class AdminController {
 	public String showContinentCountries(@PathVariable("continentId") Long continentId, Model model) {
 		model.addAttribute("continent", this.continentService.getContinentById(continentId));
 		model.addAttribute("continentCountries", this.continentService.getAllCountries(continentId));
-		return "admin/countries.html";
+		return "admin/countriesAdmin.html";
 	}
     
     /*

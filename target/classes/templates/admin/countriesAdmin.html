@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Countries</title>
+  <link rel="stylesheet" href="/css/stile.css" />
+  <link rel="stylesheet" href="/css/countries.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  
+<body>
+  <header>
+    <h1 class="country-page-title" th:text="${#strings.capitalize(continent.name)}">Continent</h1>
+    <p class="country-page-description">Select a country to explore its geopolitical details and statistics.</p>
+  </header>
+
+  <div class="container">
+	<div class="search-container">
+		<form action="/search" method="get" class="search-form" style="width: 100%; max-width: 400px;">
+		  <input type="text" class="search-box" name="query" placeholder="Search countries..." />
+		  <input type="hidden" name="continentId" th:value="${continent.id}" />
+		  <button type="submit"><i class="fas fa-search"></i></button>
+		</form>
+
+	</div>
+
+
+    <div class="countries-grid" id="countriesGrid">
+		
+      <a th:each="country : ${continentCountries}"
+         th:href="@{'/country/' + ${country.id}}"
+		 		
+         class="country-card">
+		
+		 
+
+        <div class="country-flag">
+			<img th:src="'https://flagcdn.com/64x48/' + ${country.code?.toLowerCase()} + '.png'"
+			     th:alt="${country.name} + ' flag'" />
+
+        </div>
+
+        <h3 class="country-name" th:text="${country.name}">Country Name</h3>
+        <div class="country-code-badge" th:text="${country.code}">CODE</div>
+		<!-- link to delete  -->   
+						<a th:href="@{' /admin/deleteCountry/' + ${country.id}}">delete</a>
+		
+      </a>
+    </div>
+  </div>
+</body>
+</html>

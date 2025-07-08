@@ -1,3 +1,4 @@
+> coco:
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -9,22 +10,26 @@
 
 <div th:if="${country}" class="document-container">
     <!-- Official Header -->
-    <header class="official-header">
-        <div class="header-top">
-            <div class="org-logo">
-                <div class="logo-text">🌍 INTERNATIONAL COUNTRY ASSESSMENT BUREAU</div>
-            </div>
-            <div class="classification">OFFICIAL DOCUMENT</div>
-        </div>
-        
-        <div class="country-header-main">
-            <img th:src="${country.urlImage}" th:alt="${country.name + ' Flag'}" class="country-flag-official" />
-            <div class="country-title-section">
-                <h1 th:text="${country.name}">Country Name</h1>
-                <div class="country-subtitle">Country Profile & Assessment</div>
-            </div>
-        </div>
-    </header>
+  <header class="official-header">
+      <div class="header-top">
+          <div class="org-logo">
+              <div class="logo-text">🌍 INTERNATIONAL COUNTRY ASSESSMENT BUREAU</div>
+          </div>
+          <div class="classification">OFFICIAL DOCUMENT</div>
+      </div>
+
+      <div class="country-header-main">
+          <img th:if="${country.code}" 
+               th:src="'https://flagcdn.com/w320/' + ${country.code} + '.png'"
+               alt="Flag"
+               class="country-flag-official" />
+
+          <div class="country-title-section">
+              <h1 th:text="${country.name}">Country Name</h1>
+          </div>
+      </div>
+  </header>
+
 
     <!-- Document Info -->
     <div class="document-info">
@@ -35,56 +40,56 @@
     <!-- Main Content -->
     <div class="main-content">
         <!-- Left Panel -->
-        <div class="left-panel">
-            <div class="country-image-section">
-                <img th:src="${country.urlImage}" th:alt="${country.name}" class="country-image-official" />
-                <div class="image-caption" th:text="${country.name + ' - National Flag'}">Country Flag</div>
-            </div>
+    <div class="left-panel">
 
-            <div class="key-info-section">
-                <h3 class="section-title">Key Information</h3>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <span class="info-label">Population:</span>
-                        <span class="info-value" th:text="${country.population != null ? country.population + 'M' : 'N/A'}">N/A</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Capital:</span>
-                        <span class="info-value" th:text="${country.capital ?: 'N/A'}">N/A</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Area:</span>
-                        <span class="info-value" th:text="${country.area != null ? country.area + ' km²' : 'N/A'}">N/A</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Currency:</span>
-                        <span class="info-value" th:text="${country.currency ?: 'N/A'}">N/A</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Government:</span>
-                        <span class="info-value" th:text="${country.government ?: 'N/A'}">N/A</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Current Temp:</span>
-                        <span class="info-value" th:text="${country.current_temperautre != null ? country.current_temperautre + '°C' : 'N/A'}">N/A</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Conflict Status:</span>
-                        <span class="info-value" 
-                              th:text="${country.conflict_status ?: 'Unknown'}"
-                              th:classappend="${country.conflict_status == 'Active Conflict' ? 'status-critical' : (country.conflict_status == 'Minor Conflict' ? 'status-warning' : 'status-good')}">Unknown</span>
-                    </div>
-                </div>
-            </div>
+      <!-- Panoramica + info base affiancati -->
+      <div class="overview-section">
+          <!-- Immagine -->
+          <div class="overview-image">
+              <img th:src="${country.urlImage}" th:alt="${country.name + ' Overview'}" class="country-cover-image-overlay" />
+          </div>
 
-       
-        
+          <!-- Statistiche principali -->
+          <div class="overview-info">
+              <h3 class="section-title">Key Information</h3>
+              <div class="info-row">
+                  <span class="info-label">Population:</span>
+                  <span class="info-value" th:text="${country.population != null ? country.population + 'M' : 'N/A'}">N/A</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Capital:</span>
+                  <span class="info-value" th:text="${country.capital ?: 'N/A'}">N/A</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Area:</span>
+                  <span class="info-value" th:text="${country.area != null ? country.area + ' km²' : 'N/A'}">N/A</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Currency:</span>
+                  <span class="info-value" th:text="${country.currency ?: 'N/A'}">N/A</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Government:</span>
+                  <span class="info-value" th:text="${country.government ?: 'N/A'}">N/A</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Current Temp:</span>
+                  <span class="info-value" th:text="${country.current_temperautre != null ? country.current_temperautre + '°C' : 'N/A'}">N/A</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Conflict Status:</span>
+                  <span class="info-value"
+                        th:text="${country.conflict_status ?: 'Unknown'}"
+                        th:classappend="${country.conflict_status == 'Active Conflict' ? 'status-critical' : (country.conflict_status == 'Minor Conflict' ? 'status-warning' : 'status-good')}">Unknown</span>
+              </div>
+          </div>
+      </div>
 
-        <!-- Right Panel -->
+> coco:
+<!-- Right Panel -->
         <div class="right-panel">
             <!-- Detailed Statistics -->
             <div class="detailed-stats">
-                <h4 style="margin-bottom: 15px; color: #374151;">Country Assessment</h4>
                 <table class="stats-table">
                     <thead>
                         <tr>
@@ -127,7 +132,9 @@
                             <td>Military Strength</td>
                             <td th:text="${country.military_strength != null ? country.military_strength + '/10' : 'N/A'}">/10</td>
                             <td th:class="${country.military_strength != null ? (country.military_strength >= 8 ? 'rating-excellent' : (country.military_strength >= 6 ? 'rating-good' : (country.military_strength >= 4 ? 'rating-fair' : 'rating-poor'))) : ''}"
-                                th:text="${country.military_strength != null ? (country.military_strength >= 8 ? 'Excellent' : (country.military_strength >= 6 ? 'Good' : (country.military_strength >= 4 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
+
+> coco:
+th:text="${country.military_strength != null ? (country.military_strength >= 8 ? 'Excellent' : (country.military_strength >= 6 ? 'Good' : (country.military_strength >= 4 ? 'Fair' : 'Poor'))) : 'N/A'}">N/A</td>
                             <td>Defense Capabilities</td>
                         </tr>
                         <tr>
