@@ -202,7 +202,7 @@ public class GeopoliController {
 	    Model model
 	) {
 		model.addAttribute("continent", continentService.getContinentById(continentId)); // ✅
-	    List<Country> results = countryService.searchCountriesInContinentByNameStartingWith(query, continentId);
+	    List<Country> results = countryService.searchCountriesByNameStartingWith(query);
 	    System.out.println("Searching for: " + query);
 	    System.out.println("Results: " + results.size());
 
@@ -211,6 +211,8 @@ public class GeopoliController {
 	    return "countries.html";
 	}
 
+	
+	/*
     
 	@GetMapping("/api/search")
 	@ResponseBody
@@ -222,7 +224,7 @@ public class GeopoliController {
 	  
 	    return result;
 	}
-
+	 */
 	
 
 

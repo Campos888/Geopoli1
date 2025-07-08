@@ -14,8 +14,10 @@ import personalProject.model.Country;
 public interface CountryRepository extends CrudRepository<Country,Long>{
 
 	
-	//List<Country> findByNameStartingWithIgnoreCase(String Name);
-	List<Country> findByNameStartingWithIgnoreCaseAndContinent_Id(String name, Long continentId);
+	List<Country> findByNameStartingWithIgnoreCase(String name);
+	//List<Country> findByNameStartingWithIgnoreCaseAndContinent_Id(String name, Long continentId);
+
+	
 
 	
 }

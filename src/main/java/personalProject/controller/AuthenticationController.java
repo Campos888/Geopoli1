@@ -38,7 +38,7 @@ public class AuthenticationController {
 	}
 
 	
-		
+	/*	
     @GetMapping(value = "/success")
     public String defaultAfterLogin(Model model) {
         
@@ -47,6 +47,26 @@ public class AuthenticationController {
     	
         return "indexGeopoli.html";
     }
+    */
+    
+    @GetMapping("/success")
+	public String defaultAfterLogin(Model model) {
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
+	        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+	        Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+
+	        if (credentials != null) {
+	            if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+	                return "redirect:/admin";  // reindirizza alla dashboard admin
+	            } else {
+	                return "indexGeopoli"; // ritorna alla homepage utente
+	            }
+	        }
+	    }
+	    return "redirect:/login"; // fallback
+	}
+
 
 	@PostMapping(value = { "/register" })
     public String registerUser(@Valid @ModelAttribute("user") User user,

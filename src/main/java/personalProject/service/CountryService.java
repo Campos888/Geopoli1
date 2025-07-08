@@ -8,7 +8,6 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import personalProject.model.Country;
 import personalProject.repository.CountryRepository;
 
@@ -39,13 +38,25 @@ public class CountryService {
 	        }
 	    }
 
+	public List<Country> searchCountriesByNameStartingWith(String query) {
+		List<Country> countryByName = countryRepository.findByNameStartingWithIgnoreCase(query);
+
 	 
+	    Set<Country> results = new HashSet<>();
+	    results.addAll(countryByName);
+
+	    return new ArrayList<>(results);
+	}
+
+	 
+	 
+	 /*
 	 public List<Country> searchCountriesInContinentByNameStartingWith(String query, Long continentId) {
 		    List<Country> countriesByName = countryRepository.findByNameStartingWithIgnoreCaseAndContinent_Id(query, continentId);
 		    return new ArrayList<>(new HashSet<>(countriesByName));
 		}
 
-	
+	*/
 	 
 	 /*
 	public List<Country> searchCountriesInContinentByNameStartingWith(String query, Long continentId) {
